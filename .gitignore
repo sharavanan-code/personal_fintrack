@@ -1,0 +1,18 @@
+# Java backend
+fintrack/target/
+*.log
+*.class
+*.jar
+*.war
+*.iml
+
+# React frontend
+fintrack-frontend/node_modules/
+fintrack-frontend/dist/
+*.env
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
