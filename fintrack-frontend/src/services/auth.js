@@ -9,6 +9,15 @@ export async function login(data) {
   return api.post("/auth/login", data);
 }
 
+export async function deleteUser() {
+  const token = getToken();
+  return api.delete("/auth/delete", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
 export function saveToken(token) {
   localStorage.setItem("token", token);
 }

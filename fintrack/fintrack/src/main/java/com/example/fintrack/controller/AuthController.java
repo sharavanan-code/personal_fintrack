@@ -5,6 +5,7 @@ import com.example.fintrack.dto.LoginRequest;
 import com.example.fintrack.dto.RegisterRequest;
 import com.example.fintrack.entity.User;
 import com.example.fintrack.repository.UserRepository;
+import com.example.fintrack.security.CustomUserDetails;
 import com.example.fintrack.security.JwtUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,4 +76,6 @@ public class AuthController {
         userRepository.delete(user);
         return ResponseEntity.ok("Account deleted successfully");
     }
+
+
 }

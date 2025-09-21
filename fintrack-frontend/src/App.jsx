@@ -8,6 +8,9 @@ import IncomeForm from "./pages/IncomeForm";
 import ExpenseForm from "./pages/ExpenseForm";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NavBar from "./components/NavBar";
+import DeleteUser from "./pages/DeleteUser";
+import PrivateRoute from "./components/PrivateRoute";
+
 
 export default function App() {
   return (
@@ -18,10 +21,40 @@ export default function App() {
           <Route path="/" element={<Navigate to="/dashboard" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/delete-account" element={<DeleteUser />} />
+          <Route
+  path="/delete"
+  element={
+    <PrivateRoute>
+      <DeleteUser />
+    </PrivateRoute>
+  }
+/>
 
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
-          <Route path="/income" element={<ProtectedRoute><IncomeForm/></ProtectedRoute>} />
-          <Route path="/expense" element={<ProtectedRoute><ExpenseForm/></ProtectedRoute>} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/income"
+            element={
+              <ProtectedRoute>
+                <IncomeForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/expense"
+            element={
+              <ProtectedRoute>
+                <ExpenseForm />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </div>
     </div>
