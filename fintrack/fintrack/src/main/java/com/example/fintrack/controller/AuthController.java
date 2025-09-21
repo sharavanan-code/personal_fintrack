@@ -39,6 +39,11 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest req) {
+        if (req.getUsername() == null || req.getUsername().isBlank() ||
+                req.getEmail() == null || req.getEmail().isBlank() ||
+                req.getPassword() == null || req.getPassword().isBlank()) {
+            return ResponseEntity.badRequest().body("Please fill all required fields");
+        }
         if (userRepository.existsByEmail(req.getEmail())) {
             return ResponseEntity.badRequest().body("Email already in use");
         }
@@ -55,12 +60,23 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest req) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword())
-        );
-        String token = jwtUtils.generateToken(req.getEmail());
-        return ResponseEntity.ok(new AuthResponse(token));
+        if (
+                req.getEmail() == null || req.getEmail().isBlank() ||
+                req.getPassword() == null || req.getPassword().isBlank()) {
+            return ResponseEntity.badRequest().body("Please fill all required fields");
+        }
+
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword())
+            );
+            String token = jwtUtils.generateToken(req.getEmail());
+            return ResponseEntity.ok(new AuthResponse(token));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        }
     }
+
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteAccount() {
