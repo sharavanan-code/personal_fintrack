@@ -53,15 +53,16 @@ export default function Register() {
             {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
           </span> */}
 
-          <span
+      <span
   className="absolute right-2 top-2 cursor-pointer text-gray-600"
   onClick={() => setShowPassword(!showPassword)}
 >
   {showPassword 
-    ? <AiFillEyeInvisible /> // Password is visible → show closed eye to indicate clicking will hide it
-    : <AiFillEye />          // Password is hidden → show open eye to indicate clicking will show it
+    ? <AiFillEye />      // When password is visible, show **open eye** to indicate you can hide it
+    : <AiFillEyeInvisible /> // When password is hidden, show **closed eye** to indicate you can show it
   }
 </span>
+
 
         </div>
 

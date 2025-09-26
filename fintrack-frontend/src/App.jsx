@@ -10,6 +10,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NavBar from "./components/NavBar";
 import DeleteUser from "./pages/DeleteUser";
 import PrivateRoute from "./components/PrivateRoute";
+import IncomeHistory from "./pages/IncomeHistory";
+import ExpenseHistory from "./pages/ExpenseHistory";
 
 
 export default function App() {
@@ -22,6 +24,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/delete-account" element={<DeleteUser />} />
+          <Route path="/income-history" element={<IncomeHistory />} />
+<Route path="/expense-history" element={<ExpenseHistory />} />
           <Route
   path="/delete"
   element={

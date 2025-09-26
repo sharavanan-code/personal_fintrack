@@ -24,11 +24,21 @@ export default function NavBar() {
         <div className="hidden md:flex items-center gap-6">
           {isAuthenticated() ? (
             <>
+             <Link to="/dashboard" className="text-gray-600 hover:text-indigo-600 transition">
+                Dashboard
+              </Link>
+           
               <Link to="/income" className="text-gray-600 hover:text-indigo-600 transition">
                 Add Income
               </Link>
               <Link to="/expense" className="text-gray-600 hover:text-indigo-600 transition">
                 Add Expense
+              </Link>
+               <Link to="/income-history" className="text-gray-600 hover:text-indigo-600 transition">
+                Income History
+              </Link>
+              <Link to="/expense-history" className="text-gray-600 hover:text-indigo-600 transition">
+                Expense History
               </Link>
               <Link
                 to="/delete-account"
@@ -77,6 +87,12 @@ export default function NavBar() {
               </Link>
               <Link to="/expense" className="block text-gray-600 hover:text-indigo-600 transition">
                 Add Expense
+              </Link>
+              <Link to="/income-history" className="block text-gray-600 hover:text-indigo-600 transition">
+                Income History
+              </Link>
+              <Link to="/expense-history" className="block text-sm text-gray-600 hover:text-indigo-600 transition">
+                Expense History
               </Link>
               <Link
                 to="/delete-account"
